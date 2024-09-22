@@ -74,8 +74,8 @@ def main():
         loops_needed=1,
         breath_in_len=5,
         breath_in_hold_len=10,
-        breath_out_len=7,
         breath_out_hold_len=11,
+        breath_out_len=7,
         )
     ex.show()
 
