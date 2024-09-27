@@ -1,5 +1,6 @@
 from time import sleep
 
+
 class ExerciseStage:
     is_active = False
     is_finished = False
