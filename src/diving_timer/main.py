@@ -1,9 +1,9 @@
-# from src.logger import setup_logger
+from pprint import pprint
+
 from src.diving_timer.classes.exercise import Exercise
 
-
 import logging
-logger = logging.getLogger(__name__)
+logger = logging.getLogger("src")
 
 def main():
     ex = Exercise(
@@ -13,6 +13,7 @@ def main():
         breath_out_len=1,
         breath_out_hold_len=1,
         )
+
     logger.info("instance of Exercise created")
     ex.show()
     logger.info("Starting exercise")

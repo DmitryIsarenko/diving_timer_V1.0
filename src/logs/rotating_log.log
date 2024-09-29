@@ -1,12 +1,2 @@
-2024-09-29 21:32:17 INFO     --- Logger <<src.diving_timer>> started. --- src.diving_timer:33
-2024-09-29 21:32:17 INFO     --- success, making json --- src.diving_timer.classes.exercise:68
-2024-09-29 21:32:23 INFO     --- Logger <<src.diving_timer>> started. --- src.diving_timer:33
-2024-09-29 21:32:23 INFO     --- success, making json --- src.diving_timer.classes.exercise:68
-2024-09-29 21:32:24 INFO     --- Logger <<src.diving_timer>> started. --- src.diving_timer:33
-2024-09-29 21:32:24 INFO     --- success, making json --- src.diving_timer.classes.exercise:68
-2024-09-29 21:32:36 INFO     --- Logger <<src.diving_timer>> started. --- src.diving_timer:33
-2024-09-29 21:32:36 INFO     --- success, making json --- src.diving_timer.classes.exercise:68
-2024-09-29 21:32:39 INFO     --- Logger <<src.diving_timer>> started. --- src.diving_timer:33
-2024-09-29 21:32:39 INFO     --- success, making json --- src.diving_timer.classes.exercise:68
-2024-09-29 21:32:40 INFO     --- Logger <<src.diving_timer>> started. --- src.diving_timer:33
-2024-09-29 21:32:40 INFO     --- success, making json --- src.diving_timer.classes.exercise:68
+2024-09-29 23:01:07 CRITICAL --- instance of Exercise created --- src:17
+2024-09-29 23:01:07 CRITICAL --- Starting exercise --- src:19

@@ -1,16 +1,13 @@
 from datetime import datetime
+from pickletools import pydict
+
+from src.diving_timer.classes.json_operator import JsonOperator
 from src.diving_timer.classes.loop import Loop
-from src.diving_timer.classes.stages import (
-    ExerciseStage,
-    # ExerciseStageBreathIn,
-    # ExerciseStageBreathInHold,
-    # ExerciseStageBreathOut,
-    # ExerciseStageBreathOutHold
-    )
 
 import logging
+
 logger = logging.getLogger(__name__)
-print(__name__)
+
 
 class Exercise:
     time_data = datetime.now()
@@ -19,17 +16,33 @@ class Exercise:
     is_finished = False
 
     def __init__(
-            self, *, loops_needed: int = 1,
+            self, *,
+            loops_needed: int = 1,
             breath_in_len: int = 1,
             breath_in_hold_len: int = 1,
             breath_out_len: int = 1,
             breath_out_hold_len: int = 1,
             ):
-        self.loops_needed = loops_needed
-        self.breath_in_len = breath_in_len
-        self.breath_in_hold_len = breath_in_hold_len
-        self.breath_out_len = breath_out_len
-        self.breath_out_hold_len = breath_out_hold_len
+
+        res = self.set_json_data_from_file()
+        if res:
+            logger.info(f"Set data from a file.")
+        else:
+            self.loops_needed = loops_needed
+            self.breath_in_len = breath_in_len
+            self.breath_in_hold_len = breath_in_hold_len
+            self.breath_out_len = breath_out_len
+            self.breath_out_hold_len = breath_out_hold_len
+            logger.info(f"Set data from an input.")
+
+
+        self.exercise_data = {
+            "loops_needed": self.loops_needed,
+            "breath_in_len": self.breath_in_len,
+            "breath_in_hold_len": self.breath_in_hold_len,
+            "breath_out_len": self.breath_out_len,
+            "breath_out_hold_len": self.breath_out_hold_len,
+            }
 
         self.loops_in_exercise: list[Loop] = self.initialize_loops_in_list()
 
@@ -60,9 +73,23 @@ class Exercise:
         else:
             return False
 
-
-
     def form_exercise_data_json(self):
         is_exercise_finished = self.check_if_all_stages_is_finished_true()
         if is_exercise_finished:
-            logger.info("success, making json")
+            logger.info("Exercise finished, making json")
+        JsonOperator.write_json(filepath="../jsondata.json",py_dict=self.exercise_data)
+
+
+    def set_json_data_from_file(self) -> bool:
+        files = JsonOperator.get_json_files_from_dir(filepath="../")
+        if files:
+            pydict = JsonOperator.read_json(filepath=f"../{files[0]}")
+
+            self.loops_needed = pydict["loops_needed"]
+            self.breath_in_len = pydict["breath_in_len"]
+            self.breath_in_hold_len = pydict["breath_in_hold_len"]
+            self.breath_out_len = pydict["breath_out_len"]
+            self.breath_out_hold_len = pydict["breath_out_hold_len"]
+            return True
+        else:
+            return False

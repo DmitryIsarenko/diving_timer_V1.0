@@ -1,32 +1,35 @@
 import json
 import os
 import logging
+from xml.sax import parse
 
 logger = logging.getLogger(__name__)
-
-logger.debug("Msg from JSON package")
-logger.info("Msg from JSON package")
-logger.warning("Msg from JSON package")
-logger.error("Msg from JSON package")
-logger.critical("Msg from JSON package")
 
 
 class JsonOperator:
     def __init__(self):
         pass
 
-    def find_json(self, *, filepath: str) -> list[json]:
-        files_list = os.listdir()
+    @staticmethod
+    def get_json_files_from_dir(*, filepath: str) -> list[json]:
+        files = list()
+        files_list = os.listdir(path=filepath)
+        logger.info(f"list of json files: {files_list}")
         for file in files_list:
-            if type(file) is json:
-                pass
-        return []
+            if ".json" in file[-5::]:
+                files.append(file)
+        return files
 
-    def read_json(self, *, filepath: str) -> dict:
-        pass
+    @staticmethod
+    def read_json(*, filepath: str) -> dict:
+        with open(file=filepath, mode="r") as file:
+            json_str = json.load(fp=file)
+            return json_str
 
-    def write_json(self, *, filepath: str) -> bool:
-        pass
+    @staticmethod
+    def write_json(*, filepath: str, py_dict: dict) -> None:
+        with open(file=filepath, mode="w") as file:
+            json.dump(obj=py_dict, fp=file, sort_keys=True, indent=4)
 
     def send_json_to_db(self, *, filepath: str, db) -> bool:
         pass
