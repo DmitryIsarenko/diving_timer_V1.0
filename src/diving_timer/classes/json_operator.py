@@ -4,7 +4,11 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+logger.debug("Msg from JSON package")
 logger.info("Msg from JSON package")
+logger.warning("Msg from JSON package")
+logger.error("Msg from JSON package")
+logger.critical("Msg from JSON package")
 
 
 class JsonOperator:

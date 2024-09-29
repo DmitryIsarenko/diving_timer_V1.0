@@ -8,8 +8,11 @@ from src.diving_timer.classes.stages import (
     # ExerciseStageBreathOutHold
     )
 
+import logging
+logger = logging.getLogger(__name__)
+print(__name__)
 
-class Exercice:
+class Exercise:
     time_data = datetime.now()
     is_started = False
     is_interrupted = False
@@ -23,7 +26,6 @@ class Exercice:
             breath_out_hold_len: int = 1,
             ):
         self.loops_needed = loops_needed
-        print(type(self.loops_needed))
         self.breath_in_len = breath_in_len
         self.breath_in_hold_len = breath_in_hold_len
         self.breath_out_len = breath_out_len
@@ -63,5 +65,4 @@ class Exercice:
     def form_exercise_data_json(self):
         is_exercise_finished = self.check_if_all_stages_is_finished_true()
         if is_exercise_finished:
-            print("success, making json")
-
+            logger.info("success, making json")
