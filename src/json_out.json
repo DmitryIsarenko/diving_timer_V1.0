@@ -1,0 +1,21 @@
+{
+    "exercise_data": {
+        "breath_in_hold_len": 1,
+        "breath_in_len": 1,
+        "breath_out_hold_len": 1,
+        "breath_out_len": 1,
+        "exercise_end_datetime": "2024-10-01 18:42:27",
+        "exercise_length": 8,
+        "exercise_start_datetime": "2024-10-01 18:42:19",
+        "is_finished": false,
+        "is_started": true,
+        "loops_needed": 2
+    },
+    "userdata": {
+        "user_country": "Russia",
+        "user_id": 1,
+        "user_language": "russian",
+        "user_timezone": "+3",
+        "username": "Dmitry"
+    }
+}

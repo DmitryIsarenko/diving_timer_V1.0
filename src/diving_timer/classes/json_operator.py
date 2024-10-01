@@ -21,7 +21,7 @@ class JsonOperator:
         return files
 
     @staticmethod
-    def read_json(*, filepath: str) -> dict:
+    def get_dict_from_json_file(*, filepath: str) -> dict:
         with open(file=filepath, mode="r") as file:
             json_str = json.load(fp=file)
             return json_str

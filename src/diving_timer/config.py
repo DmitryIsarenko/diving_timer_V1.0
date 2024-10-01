@@ -7,3 +7,5 @@ exercise_settings = {
     }
 
 LOOP_CONDITIONS = ("Paused", "Finished", "Interrupted")
+JSON_INPUT_FILEPATH = "../json_in.json"
+JSON_OUTPUT_FILENAME = "../json_out.json"
